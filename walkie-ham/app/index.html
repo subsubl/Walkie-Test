@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Walkie-Talkie — HAM Panel</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="ham-bg">
+  <div id="app" class="ham-panel-container">
+    <div class="ham-panel">
+      <div class="ham-topbar flex items-center justify-between px-4 py-2">
+        <div class="ham-id">
+          <div class="call">CALL: <span id="callSign">YOURNAME</span></div>
+          <div class="freq">145.500 <span class="mhz">MHz</span></div>
+        </div>
+        <div class="ham-leds flex items-center gap-4">
+          <div class="led-group text-right">
+            <div class="label">PEER</div>
+            <div id="peerLed" class="led led-off"></div>
+          </div>
+          <div class="led-group text-right">
+            <div class="label">RX</div>
+            <div id="playLed" class="led led-off"></div>
+          </div>
+          <div class="conn text-right">
+            <div class="label">CONN</div>
+            <div id="connStatus" class="conn-text">OFF-AIR</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ham-body grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div class="col-span-2 flex flex-col gap-3">
+          <div class="controls flex items-center justify-between gap-3">
+            <div class="switches flex items-center gap-4">
+              <label class="switch">
+                <input id="onAir" type="checkbox" />
+                <span class="slider"></span>
+              </label>
+              <div class="switch-label">ON-AIR</div>
+
+              <label class="switch">
+                <input id="night" type="checkbox" />
+                <span class="slider"></span>
+              </label>
+              <div class="switch-label">NIGHT</div>
+            </div>
+
+            <div class="action-buttons flex items-center gap-2">
+              <button id="undoBtn" class="ham-btn">Undo</button>
+              <button id="redoBtn" class="ham-btn">Redo</button>
+              <button id="clearBtn" class="ham-btn ham-btn-danger">CLR SCRN</button>
+            </div>
+          </div>
+
+          <div class="screen bg-black/40 rounded-lg p-2 relative">
+            <canvas id="whiteboard" class="whiteboard-canvas"></canvas>
+            <div id="overlay" class="overlay hidden">
+              <div>
+                <div id="overlayText" class="overlay-title">WAITING FOR PEER...</div>
+                <div class="overlay-sub">Whiteboard active when another user joins</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="palette mt-2"></div>
+        </div>
+
+        <div class="col-span-1 flex flex-col gap-4 items-center">
+          <div class="vu-block w-full">
+            <div class="vu-label">MIC</div>
+            <div class="vu-meter"><div id="micNeedle" class="vu-needle" style="transform:rotate(-45deg)"></div></div>
+            <input id="micGain" type="range" min="0" max="150" value="100" class="w-full mt-2" />
+          </div>
+
+          <div class="ptt-block flex flex-col items-center gap-3">
+            <button id="ptt" class="ptt-btn">PTT</button>
+            <div id="status" class="status">Initializing...</div>
+          </div>
+
+          <div class="vu-block w-full">
+            <div class="vu-label">OUTPUT</div>
+            <div class="vu-meter"><div id="outNeedle" class="vu-needle" style="transform:rotate(-45deg)"></div></div>
+            <input id="outGain" type="range" min="0" max="100" value="100" class="w-full mt-2" />
+          </div>
+        </div>
+      </div>
+
+      <div class="ham-footer px-4 py-3 text-xs text-amber-200">
+        <div class="flex items-center justify-between">
+          <div>Built for Spixi — HAM-style panel</div>
+          <div>Version 1.1.0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+caVersion = 0
+id = com.yourname.walkie.ham
+publisher = YourName
+name = WalkieTalkie-HAM
+version = 1.1.0
+capabilities = multiUser
