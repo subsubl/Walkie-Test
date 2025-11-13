@@ -1,0 +1,13 @@
+caVersion = 0
+id = com.yourname.walkie.ham
+publisher = YourName
+name = WalkieTalkie-HAM
+version = 1.1.0
+capabilities = multiUser
+image = walkietalkie-ham.png
+minUsers = 
+maxUsers = 
+protocols = 
+contentUrl = walkietalkie-ham.zip
+checksum = 00e2128fbff4b2282038221ccc8042d24bf3845e5c8bb57458b93c6781a5a9ae
+contentSize = 13992
